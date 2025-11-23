@@ -45,11 +45,17 @@ def findWorstFive():
     d = d.sort_values(by=["PPG", "RPG", "APG"], ascending= False)    
     print(d.tail()) 
 
-def compareTwoPlayers():  
-    #TODO reuse function code and then do side by side comparison and have a input that asks for visulizaton 
-    #and then use matplotlib 
-    return
+def compareTwoPlayers(player1, player2):
+    dataSet = pd.read_csv("nbaNew.csv")    
+    d = dataSet.groupby("PlayerName")[["PTS", "G", "AST", "TRB"]].sum()   
 
+    d["PPG"] = d["PTS"]/d["G"]  
+    d["RPG"] = d["TRB"]/d["G"]  
+    d["APG"] = d["AST"]/d["G"] 
+
+
+    #add a subplot so you can show detailed comparison bar chart for points rebs ass 
+   
 
 #function ideas: --> 
 
