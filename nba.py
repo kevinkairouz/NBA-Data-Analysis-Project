@@ -13,7 +13,14 @@ def searchPlayerStats(playerName):
     print(d.loc[playerName][["PPG", "RPG", "APG"]]) 
     print(f"{searchPlayer} has played for the following") 
     teamQuery = dataSet[dataSet["PlayerName"] == playerName]  
-    print(teamQuery[["Tm"]].drop_duplicates())  
+    print(teamQuery[["Tm"]].drop_duplicates())   
+
+    yearQuery = dataSet[dataSet["PlayerName"] == playerName]  
+    rookieYear = yearQuery["SeasonStart"].min() 
+    finalYear = yearQuery["SeasonStart"].max() 
+    yearsPlayed = yearQuery["SeasonStart"].count()    
+
+    print(f"{playerName} was in the NBA for a total of {yearsPlayed} years from {rookieYear} to {finalYear}")
     return 
 
 def findTopFive():  
@@ -36,7 +43,15 @@ def findWorstFive():
     d["APG"] = d["AST"]/d["G"]  
 
     d = d.sort_values(by=["PPG", "RPG", "APG"], ascending= False)    
-    print(d.tail())
+    print(d.tail()) 
+
+def compareTwoPlayers():  
+    #TODO reuse function code and then do side by side comparison and have a input that asks for visulizaton 
+    #and then use matplotlib 
+    return
+
+
+
 
 
 
