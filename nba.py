@@ -51,8 +51,30 @@ def compareTwoPlayers():
     return
 
 
+#function ideas: --> 
 
+#function that chooses two random players in the db/dataset and u choose which player u rather have on ur team 
+#after you get the reveal of the players 
 
+#function that compares 3 players  
+
+#function that shows a players minutes and compares it to a real game like minutes played vs rest 
+
+#function that tracks a players points or minutes over the years we have access to age variable in csv 
+
+#starting 5 function where you choose your starting 5 and another person chooses their starting 5 and u see who wins 
+
+#same thing but 3 on 3 version 
+
+#create stat called most offensive impact and find the most offensive impactful person  
+#formula will be points + rebounds + assists - turnovers  
+
+#same thing but defense 
+#blocks + steals - fouls   
+
+#show me a draft class 
+#where we group by names and we choose the people who have the min year and if it is equal to draft class number user enters we display 
+#those said players 
 
 
 
