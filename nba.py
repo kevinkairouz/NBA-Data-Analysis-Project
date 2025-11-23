@@ -10,7 +10,13 @@ d["PPG"] = d["PTS"]/d["G"]
 d["RPG"] = d["TRB"]/d["G"]  
 d["APG"] = d["AST"]/d["G"]
 
-print(d.loc["Derrick Rose"]) 
+
+d = d.sort_values(by=["PPG"], ascending= False)   
+
+print(d[["PPG", "APG", "RPG"]].head())
+
+
+
 
 
 
