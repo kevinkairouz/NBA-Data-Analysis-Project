@@ -89,10 +89,61 @@ def compareTwoPlayers(player1, player2):
     axis[2].set_title("Assists Per Game")
 
     plt.show() 
+
+
+def compareThreePlayers(player1, player2, player3): 
+    dataSet = pd.read_csv("nbaNew.csv")
+    dataSet["PlayerName"] = dataSet["PlayerName"].str.replace("*", "")
+    d = dataSet.groupby("PlayerName")[["PTS", "G", "AST", "TRB"]].sum()   
+
+    d["PPG"] = d["PTS"]/d["G"]  
+    d["RPG"] = d["TRB"]/d["G"]  
+    d["APG"] = d["AST"]/d["G"]  
+
+    p1points = d.loc[player1]["PPG"] 
+    p2points = d.loc[player2]["PPG"] 
+    p3points = d.loc[player3]["PPG"]
+
+    p1Reb = d.loc[player1]["RPG"]  
+    p2Reb = d.loc[player2]["RPG"]
+    p3Reb = d.loc[player3]["RPG"]
+
+
+    p1Asg = d.loc[player1]["APG"] 
+    p2Asg = d.loc[player2]["APG"]  
+    p3Asg = d.loc[player3]["APG"]  
+
     
+
+
+    p = [p1points, p2points, p3points]
+    print(player1)
+    print(d.loc[player1][["PPG", "RPG", "APG"]]) 
+
+    print(player2) 
+    print(d.loc[player2][["PPG", "RPG", "APG"]])  
+
+    print(player3)
+    print(d.loc[[player3]][["PPG", "RPG", "APG"]])
+
+
+    figure, axis = plt.subplots(1, 3)   
+
+
+    axis[0].bar([player1, player2, player3], [p1points, p2points, p3points], color = ["green", "blue", "red"]) 
+    axis[0].set_title("Points Per Game")  
+
+    axis[1].bar([player1, player2, player3], [p1Reb, p2Reb, p3Reb], color = ["green", "blue", "red"]) 
+    axis[1].set_title("Rebounds Per Game")
+
+    axis[2].bar([player1, player2, player3], [p1Asg, p2Asg, p3Asg], color = ["green", "blue", "red"]) 
+    axis[2].set_title("Assists Per Game") 
+
+
+    plt.show() 
     #add a subplot so you can show detailed comparison bar chart for points rebs ass  
 
-   
+
 
 #function ideas: --> 
 
@@ -132,9 +183,12 @@ print("Welcome to the NBA player finder")
 p1 = str(input("Enter Player 1: "))  
 p1 = p1.strip()
 p2 = str(input("Enter Player 2: ")) 
-p2 = p2.strip()
+p2 = p2.strip() 
+p3 = str(input("Enter Player 3: ")) 
+p3 = p3.strip() 
 
-compareTwoPlayers(p1, p2)
+
+compareThreePlayers(p1, p2, p3)
 
 
 
