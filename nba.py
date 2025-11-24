@@ -11,6 +11,10 @@ def searchPlayerStats(playerName):
     d["PPG"] = d["PTS"]/d["G"]  
     d["RPG"] = d["TRB"]/d["G"]  
     d["APG"] = d["AST"]/d["G"]  
+    ppg = d.loc[playerName]["PPG"] 
+    rbg = d.loc[playerName]["RPG"] 
+    apg = d.loc[playerName]["APG"] 
+
 
     print(d.loc[playerName][["PPG", "RPG", "APG"]]) 
     print(f"{playerName} has played for the following") 
@@ -20,10 +24,17 @@ def searchPlayerStats(playerName):
     yearQuery = dataSet[dataSet["PlayerName"] == playerName]  
     rookieYear = yearQuery["SeasonStart"].min() 
     finalYear = yearQuery["SeasonStart"].max() 
-    yearsPlayed = yearQuery["SeasonStart"].count()    
+    yearsPlayed = yearQuery["SeasonStart"].count()   
+
+    plt.title(playerName)
+    plt.bar(["PPG", "RPG", "APG"], [ppg, rbg, apg], color = ["red", "black", "orange"])  
 
     print(f"{playerName} was in the NBA for a total of {yearsPlayed} years from {rookieYear} to {finalYear}")
-    return 
+    
+    plt.show()
+    return
+
+
 def findTopFive():  
     dataSet = pd.read_csv("nbaNew.csv")    
     d = dataSet.groupby("PlayerName")[["PTS", "G", "AST", "TRB"]].sum()   
@@ -141,7 +152,6 @@ def compareThreePlayers(player1, player2, player3):
 
 
     plt.show() 
-    #add a subplot so you can show detailed comparison bar chart for points rebs ass  
 
 
 
@@ -149,8 +159,6 @@ def compareThreePlayers(player1, player2, player3):
 
 #function that chooses two random players in the db/dataset and u choose which player u rather have on ur team 
 #after you get the reveal of the players 
-
-#function that compares 3 players  
 
 #function that shows a players minutes and compares it to a real game like minutes played vs rest 
 
@@ -176,19 +184,19 @@ def compareThreePlayers(player1, player2, player3):
 
 
 print("Welcome to the NBA player finder")
-# searchPlayer = str(input("Enter an NBA player: "))  
+searchPlayer = str(input("Enter an NBA player: "))  
 
-# searchPlayerStats(searchPlayer) 
+searchPlayerStats(searchPlayer) 
 
-p1 = str(input("Enter Player 1: "))  
-p1 = p1.strip()
-p2 = str(input("Enter Player 2: ")) 
-p2 = p2.strip() 
-p3 = str(input("Enter Player 3: ")) 
-p3 = p3.strip() 
+# p1 = str(input("Enter Player 1: "))  
+# p1 = p1.strip()
+# p2 = str(input("Enter Player 2: ")) 
+# p2 = p2.strip() 
+# p3 = str(input("Enter Player 3: ")) 
+# p3 = p3.strip() 
 
 
-compareThreePlayers(p1, p2, p3)
+# compareThreePlayers(p1, p2, p3)
 
 
 
