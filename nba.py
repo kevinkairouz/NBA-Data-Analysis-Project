@@ -1,5 +1,6 @@
 import pandas as pd   
-import matplotlib.pyplot as plt 
+import matplotlib.pyplot as plt  
+import random
 
 def searchPlayerStats(playerName): 
 
@@ -124,9 +125,6 @@ def compareThreePlayers(player1, player2, player3):
     p2Asg = d.loc[player2]["APG"]  
     p3Asg = d.loc[player3]["APG"]  
 
-    
-
-
     p = [p1points, p2points, p3points]
     print(player1)
     print(d.loc[player1][["PPG", "RPG", "APG"]]) 
@@ -137,9 +135,7 @@ def compareThreePlayers(player1, player2, player3):
     print(player3)
     print(d.loc[[player3]][["PPG", "RPG", "APG"]])
 
-
     figure, axis = plt.subplots(1, 3)   
-
 
     axis[0].bar([player1, player2, player3], [p1points, p2points, p3points], color = ["green", "blue", "red"]) 
     axis[0].set_title("Points Per Game")  
@@ -153,14 +149,37 @@ def compareThreePlayers(player1, player2, player3):
 
     plt.show() 
 
+def playerVsplayer():
+    #needs minor fixes to reveal names after but functionality works 
+    num1 = random.randint(1,3920) 
+    num2 = random.randint(1,3920) 
+    
+    dataSet = pd.read_csv("nbaNew.csv")
+    dataSet["PlayerName"] = dataSet["PlayerName"].str.replace("*", "")
+    d = dataSet.groupby("PlayerName")[["PTS", "G", "AST", "TRB"]].sum()     
+
+    d["PPG"] = d["PTS"]/d["G"]  
+    d["RPG"] = d["TRB"]/d["G"]  
+    d["APG"] = d["AST"]/d["G"] 
+    
+    print("Player A")
+    print(d.iloc[num1][["PPG", "RPG", "APG"]])
+    print()  
+    print("Player B")
+    print(d.iloc[num2][["PPG", "RPG", "APG"]]) 
+    return None 
+
+def compareMinsToRest(player):  
+    return 0 
+    #this function will use a pie chart to display mins played vs minutes rested and or minutes in a full nba game 
+
+
+
+   
 
 
 #function ideas: --> 
 
-#function that chooses two random players in the db/dataset and u choose which player u rather have on ur team 
-#after you get the reveal of the players 
-
-#function that shows a players minutes and compares it to a real game like minutes played vs rest 
 
 #function that tracks a players points or minutes over the years we have access to age variable in csv 
 
@@ -183,10 +202,10 @@ def compareThreePlayers(player1, player2, player3):
 
 
 
-print("Welcome to the NBA player finder")
-searchPlayer = str(input("Enter an NBA player: "))  
+# print("Welcome to the NBA player finder")
+# searchPlayer = str(input("Enter an NBA player: "))  
 
-searchPlayerStats(searchPlayer) 
+# searchPlayerStats(searchPlayer) 
 
 # p1 = str(input("Enter Player 1: "))  
 # p1 = p1.strip()
@@ -197,6 +216,7 @@ searchPlayerStats(searchPlayer)
 
 
 # compareThreePlayers(p1, p2, p3)
+ 
 
 
 
