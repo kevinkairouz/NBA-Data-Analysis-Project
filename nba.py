@@ -1,5 +1,5 @@
 import pandas as pd   
-import matplotlib as plt 
+import matplotlib.pyplot as plt 
 
 def searchPlayerStats(playerName): 
 
@@ -11,7 +11,7 @@ def searchPlayerStats(playerName):
     d["APG"] = d["AST"]/d["G"]  
 
     print(d.loc[playerName][["PPG", "RPG", "APG"]]) 
-    print(f"{searchPlayer} has played for the following") 
+    print(f"{playerName} has played for the following") 
     teamQuery = dataSet[dataSet["PlayerName"] == playerName]  
     print(teamQuery[["Tm"]].drop_duplicates())   
 
@@ -45,16 +45,37 @@ def findWorstFive():
     d = d.sort_values(by=["PPG", "RPG", "APG"], ascending= False)    
     print(d.tail()) 
 
-def compareTwoPlayers(player1, player2):
+def compareTwoPlayers(player1, player2):  
+
     dataSet = pd.read_csv("nbaNew.csv")    
     d = dataSet.groupby("PlayerName")[["PTS", "G", "AST", "TRB"]].sum()   
 
     d["PPG"] = d["PTS"]/d["G"]  
     d["RPG"] = d["TRB"]/d["G"]  
-    d["APG"] = d["AST"]/d["G"] 
+    d["APG"] = d["AST"]/d["G"]  
 
+    p1points = d.loc[player1]["PPG"] 
+    p2points = d.loc[player2]["PPG"]   
 
-    #add a subplot so you can show detailed comparison bar chart for points rebs ass 
+    p1Reb = d.loc[player1]["RPG"]  
+    p2Reb = d.loc[player2]["RPG"] 
+    
+
+    p = [p1points, p2points]
+    print(player1)
+    print(d.loc[player1][["PPG", "RPG", "APG"]]) 
+
+    print(player2) 
+    print(d.loc[player2][["PPG", "RPG", "APG"]])  
+
+    plt.bar([player1, player2], p) 
+    plt.xlabel("Players") 
+    plt.ylabel("Points") 
+    plt.show() 
+
+    
+    #add a subplot so you can show detailed comparison bar chart for points rebs ass  
+
    
 
 #function ideas: --> 
@@ -85,10 +106,16 @@ def compareTwoPlayers(player1, player2):
 
 
 print("Welcome to the NBA player finder")
-searchPlayer = str(input("Enter an NBA player: "))  
+# searchPlayer = str(input("Enter an NBA player: "))  
 
-searchPlayerStats(searchPlayer)
+# searchPlayerStats(searchPlayer) 
 
+p1 = str(input("Enter Player 1: "))  
+p1 = p1.strip()
+p2 = str(input("Enter Player 2: ")) 
+p2 = p2.strip()
+
+compareTwoPlayers(p1, p2)
 
 
 
