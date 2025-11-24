@@ -3,7 +3,9 @@ import matplotlib.pyplot as plt
 
 def searchPlayerStats(playerName): 
 
-    dataSet = pd.read_csv("nbaNew.csv")    
+    dataSet = pd.read_csv("nbaNew.csv") 
+    
+    dataSet["PlayerName"] = dataSet["PlayerName"].str.replace("*", "")
     d = dataSet.groupby("PlayerName")[["PTS", "G", "AST", "TRB"]].sum()   
 
     d["PPG"] = d["PTS"]/d["G"]  
@@ -47,7 +49,8 @@ def findWorstFive():
 
 def compareTwoPlayers(player1, player2):  
 
-    dataSet = pd.read_csv("nbaNew.csv")    
+    dataSet = pd.read_csv("nbaNew.csv")
+    dataSet["PlayerName"] = dataSet["PlayerName"].str.replace("*", "")
     d = dataSet.groupby("PlayerName")[["PTS", "G", "AST", "TRB"]].sum()   
 
     d["PPG"] = d["PTS"]/d["G"]  
@@ -59,7 +62,7 @@ def compareTwoPlayers(player1, player2):
 
     p1Reb = d.loc[player1]["RPG"]  
     p2Reb = d.loc[player2]["RPG"] 
-    
+
 
     p = [p1points, p2points]
     print(player1)
@@ -106,16 +109,16 @@ def compareTwoPlayers(player1, player2):
 
 
 print("Welcome to the NBA player finder")
-# searchPlayer = str(input("Enter an NBA player: "))  
+searchPlayer = str(input("Enter an NBA player: "))  
 
-# searchPlayerStats(searchPlayer) 
+searchPlayerStats(searchPlayer) 
 
-p1 = str(input("Enter Player 1: "))  
-p1 = p1.strip()
-p2 = str(input("Enter Player 2: ")) 
-p2 = p2.strip()
+# p1 = str(input("Enter Player 1: "))  
+# p1 = p1.strip()
+# p2 = str(input("Enter Player 2: ")) 
+# p2 = p2.strip()
 
-compareTwoPlayers(p1, p2)
+# compareTwoPlayers(p1, p2)
 
 
 
