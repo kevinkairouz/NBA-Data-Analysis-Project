@@ -24,7 +24,6 @@ def searchPlayerStats(playerName):
 
     print(f"{playerName} was in the NBA for a total of {yearsPlayed} years from {rookieYear} to {finalYear}")
     return 
-
 def findTopFive():  
     dataSet = pd.read_csv("nbaNew.csv")    
     d = dataSet.groupby("PlayerName")[["PTS", "G", "AST", "TRB"]].sum()   
@@ -61,7 +60,12 @@ def compareTwoPlayers(player1, player2):
     p2points = d.loc[player2]["PPG"]   
 
     p1Reb = d.loc[player1]["RPG"]  
-    p2Reb = d.loc[player2]["RPG"] 
+    p2Reb = d.loc[player2]["RPG"]  
+
+    p1Asg = d.loc[player1]["APG"] 
+    p2Asg = d.loc[player2]["APG"] 
+
+    
 
 
     p = [p1points, p2points]
@@ -69,13 +73,22 @@ def compareTwoPlayers(player1, player2):
     print(d.loc[player1][["PPG", "RPG", "APG"]]) 
 
     print(player2) 
-    print(d.loc[player2][["PPG", "RPG", "APG"]])  
+    print(d.loc[player2][["PPG", "RPG", "APG"]]) 
 
-    plt.bar([player1, player2], p) 
-    plt.xlabel("Players") 
-    plt.ylabel("Points") 
+
+    figure, axis = plt.subplots(1, 3)   
+
+
+    axis[0].bar([player1, player2], [p1points, p2points], color = ["green", "blue"]) 
+    axis[0].set_title("Points Per Game") 
+
+    axis[1].bar([player1, player2], [p1Reb, p2Reb], color = ["green", "blue"]) 
+    axis[1].set_title("Rebounds Per Game") 
+
+    axis[2].bar([player1, player2], [p1Asg, p2Asg], color = ["green", "blue"]) 
+    axis[2].set_title("Assists Per Game")
+
     plt.show() 
-
     
     #add a subplot so you can show detailed comparison bar chart for points rebs ass  
 
@@ -104,21 +117,24 @@ def compareTwoPlayers(player1, player2):
 
 #show me a draft class 
 #where we group by names and we choose the people who have the min year and if it is equal to draft class number user enters we display 
-#those said players 
+#those said players  
+
+#helper function to find colors of a team for the bar chart 
+
 
 
 
 print("Welcome to the NBA player finder")
-searchPlayer = str(input("Enter an NBA player: "))  
+# searchPlayer = str(input("Enter an NBA player: "))  
 
-searchPlayerStats(searchPlayer) 
+# searchPlayerStats(searchPlayer) 
 
-# p1 = str(input("Enter Player 1: "))  
-# p1 = p1.strip()
-# p2 = str(input("Enter Player 2: ")) 
-# p2 = p2.strip()
+p1 = str(input("Enter Player 1: "))  
+p1 = p1.strip()
+p2 = str(input("Enter Player 2: ")) 
+p2 = p2.strip()
 
-# compareTwoPlayers(p1, p2)
+compareTwoPlayers(p1, p2)
 
 
 
