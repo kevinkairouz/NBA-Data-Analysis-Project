@@ -170,7 +170,23 @@ def playerVsplayer():
     return None 
 
 def compareMinsToRest(player):  
-    return 0 
+    nbaGameMins = 48 
+    dataSet = pd.read_csv("nbaNew.csv")
+    dataSet["PlayerName"] = dataSet["PlayerName"].str.replace("*", "") 
+    d = dataSet.groupby("PlayerName")[["MP", "G"]].sum() 
+    d["MPG"] = d["MP"]/d["G"] 
+
+    mpg = d.loc[player]["MPG"] 
+    print(f"{player} minutes per game is {mpg}")
+    nbaGameMins -= mpg
+    plt.pie([mpg, nbaGameMins], labels=["Player Minutes", "Rest"])  
+    plt.title(f"{player} mins vs rest") 
+    plt.legend(["Minutes Per Game", "Rest"])
+    plt.show() 
+
+
+
+
     #this function will use a pie chart to display mins played vs minutes rested and or minutes in a full nba game 
 
 
