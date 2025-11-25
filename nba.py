@@ -200,7 +200,7 @@ def playerHistory(player):
    dataSet["APG"] = dataSet["AST"]/dataSet["G"] 
    dataSet["MPG"] = dataSet["MP"]/dataSet["G"] 
     
-   print(dataSet[["SeasonStart", "PPG", "RPG", "APG", "MPG"]]) 
+   print(dataSet[["SeasonStart", "PPG", "RPG", "APG", "MPG"]].to_string()) 
 
    
 
@@ -210,25 +210,30 @@ def playerHistory(player):
    Y3 = dataSet["APG"] 
    Y4 = dataSet["MPG"]
 
-   figure, axis = plt.subplots(2,2) 
+   figure, axis = plt.subplots(2,2)
+   
+   axis[0, 0].fill_between(X, Y, color = "green")
+   axis[0, 0].plot(X, Y)   
+#    plt.setp(axis, xticks = X)
+   axis[0, 0].set_title("Points Per Game")
+   
+   axis[0, 1].fill_between(X, Y2, color = "orange")
+   axis[0, 1].plot(X, Y2, color = "yellow")
+   axis[0, 1].set_title("Rebounds Per Game")
 
-   axis[0, 0].plot(X, Y)
-   axis[0, 1].plot(X, Y2) 
-   axis[1, 0].plot(X, Y3) 
-   axis[1, 1].plot(X, Y4) 
+   axis[1, 0].fill_between(X, Y3, color = "pink")
+   axis[1, 0].plot(X, Y3, color = "purple") 
+   axis[1, 0].set_title("Assists Per Game") 
+   
+   axis[1, 1].fill_between(X, Y4, color = "purple")
+   axis[1, 1].plot(X, Y4, color = "pink") 
+   axis[1, 1].set_title("Minutes Per Game") 
+
    plt.show()
 
 
-#    plt.plot(X, Y, color = "black", marker = "o")  
-#    plt.fill_between(X, Y, color = "#bb5ad1")
-#    plt.xticks(X) 
-#    plt.xlabel("Year") 
-#    plt.xlabel("Points") 
-#    plt.title(f"{player} points per year")
-#    plt.show() 
 
-
-playerHistory("Derrick Rose")
+playerHistory("Kobe Bryant")
 
 #function ideas: --> 
 
