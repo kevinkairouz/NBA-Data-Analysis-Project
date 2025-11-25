@@ -149,7 +149,8 @@ def compareThreePlayers(player1, player2, player3):
 
     plt.show() 
 
-def playerVsplayer():
+def playerVsplayer():  
+    #create visual suplots for this one as well 
     #needs minor fixes to reveal names after but functionality works 
     num1 = random.randint(1,3920) 
     num2 = random.randint(1,3920) 
