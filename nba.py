@@ -187,7 +187,6 @@ def compareMinsToRest(player):
 
 
 def playerHistory(player):
-   #TODO include labels and make the plots area graphs, after that it is complete  
    dataSet = pd.read_csv("nbaNew.csv")  
    dataSet["PlayerName"] = dataSet["PlayerName"].str.replace("*", "") 
 
