@@ -231,13 +231,23 @@ def playerHistory(player):
    plt.show()
 
 
+def FiveOnFive():  
+    team1 = [] 
+    team2 = []
+    while len(team1) < 5 and len(team2) < 5:  
+        chosenPlayerTeam1 = str(input("Enter Player Name: (Team 2): ")) 
+        team1.append(chosenPlayerTeam1) 
+        chosenPlayerTeam2 = str(input("Enter Player Name (Team 2): ")) 
+        team2.append(chosenPlayerTeam2)
+    
+    #get the data of total points 
+    return 
 
-playerHistory("Kobe Bryant")
+
 
 #function ideas: --> 3 functions left 
 
 #starting 5 function where you choose your starting 5 and another person chooses their starting 5 and u see who wins 
-#same thing but 3 on 3 version  
 #Will be strictly based on points 
 
 #create stat called most offensive impact and find the most offensive impactful person  
