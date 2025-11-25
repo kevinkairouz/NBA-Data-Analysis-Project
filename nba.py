@@ -234,18 +234,16 @@ def playerHistory(player):
 
 playerHistory("Kobe Bryant")
 
-#function ideas: --> 
-
-
-
+#function ideas: --> 3 functions left 
 
 #starting 5 function where you choose your starting 5 and another person chooses their starting 5 and u see who wins 
-
-#same thing but 3 on 3 version 
+#same thing but 3 on 3 version  
+#Will be strictly based on points 
 
 #create stat called most offensive impact and find the most offensive impactful person  
-#formula will be points + rebounds + assists - turnovers  
-
+#formula will be points + rebounds + assists - turnovers   
+#write a query that sums up all of those stats by grouping the players and then print the result 
+#optional make it by year so group by year 
 #same thing but defense 
 #blocks + steals - fouls   
 
@@ -253,7 +251,7 @@ playerHistory("Kobe Bryant")
 #where we group by names and we choose the people who have the min year and if it is equal to draft class number user enters we display 
 #those said players  
 
-#helper function to find colors of a team for the bar chart 
+
 
 
 
