@@ -185,19 +185,54 @@ def compareMinsToRest(player):
     plt.show() 
 
 
-
-
-    #this function will use a pie chart to display mins played vs minutes rested and or minutes in a full nba game 
-
-
+def playerHistory(player):
+   #TODO include labels and make the plots area graphs, after that it is complete  
+   dataSet = pd.read_csv("nbaNew.csv")  
+   dataSet["PlayerName"] = dataSet["PlayerName"].str.replace("*", "") 
 
    
 
+   dataSet = dataSet[dataSet["PlayerName"] == player] 
+
+   dataSet["PPG"] = dataSet["PTS"]/dataSet["G"] 
+   dataSet["RPG"] = dataSet["TRB"]/dataSet["G"] 
+   dataSet["APG"] = dataSet["AST"]/dataSet["G"] 
+   dataSet["MPG"] = dataSet["MP"]/dataSet["G"] 
+    
+   print(dataSet[["SeasonStart", "PPG", "RPG", "APG", "MPG"]]) 
+
+   
+
+   X = dataSet["SeasonStart"] #years 
+   Y = dataSet["PPG"] 
+   Y2 = dataSet["RPG"] 
+   Y3 = dataSet["APG"] 
+   Y4 = dataSet["MPG"]
+
+   figure, axis = plt.subplots(2,2) 
+
+   axis[0, 0].plot(X, Y)
+   axis[0, 1].plot(X, Y2) 
+   axis[1, 0].plot(X, Y3) 
+   axis[1, 1].plot(X, Y4) 
+   plt.show()
+
+
+#    plt.plot(X, Y, color = "black", marker = "o")  
+#    plt.fill_between(X, Y, color = "#bb5ad1")
+#    plt.xticks(X) 
+#    plt.xlabel("Year") 
+#    plt.xlabel("Points") 
+#    plt.title(f"{player} points per year")
+#    plt.show() 
+
+
+playerHistory("Derrick Rose")
 
 #function ideas: --> 
 
 
-#function that tracks a players points or minutes over the years we have access to age variable in csv 
+
 
 #starting 5 function where you choose your starting 5 and another person chooses their starting 5 and u see who wins 
 
