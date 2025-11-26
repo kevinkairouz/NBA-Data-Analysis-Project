@@ -278,7 +278,9 @@ def FiveOnFive():
 
 
 
+def showDraftClass(draftClass): 
 
+    return 
 #function ideas: --> 1 function left 
 
 #not doing 
@@ -301,7 +303,6 @@ def FiveOnFive():
 
 
 print("Welcome to the NBA player finder")
-FiveOnFive() 
 # searchPlayer = str(input("Enter an NBA player: "))  
 
 # searchPlayerStats(searchPlayer) 
