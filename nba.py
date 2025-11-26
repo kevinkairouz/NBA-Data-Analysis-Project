@@ -266,10 +266,10 @@ def FiveOnFive():
 
 
 
-# print("Welcome to the NBA player finder")
-# searchPlayer = str(input("Enter an NBA player: "))  
+print("Welcome to the NBA player finder")
+searchPlayer = str(input("Enter an NBA player: "))  
 
-# searchPlayerStats(searchPlayer) 
+searchPlayerStats(searchPlayer) 
 
 # p1 = str(input("Enter Player 1: "))  
 # p1 = p1.strip()
