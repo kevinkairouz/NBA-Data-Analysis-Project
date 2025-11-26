@@ -231,9 +231,9 @@ def playerHistory(player):
    plt.show()
 
 
-def FiveOnFive(): 
+def FiveOnFive():  
     df = pd.read_csv("nbaNew.csv") 
-    df = df["PlayerName"].str.replace("*", "") 
+    df["PlayerName"] = df["PlayerName"].str.replace("*", "") 
     team1 = [] 
     team2 = [] 
     points1 = [] 
@@ -246,40 +246,42 @@ def FiveOnFive():
         team2.append(chosenPlayerTeam2) 
     
 
-    df = df.groupby("PlayerName")[["PTS", "G"]].sum() 
-    df["PPG"] = df["PTS"]/df["G"] 
+    d = df.groupby("PlayerName")[["PTS", "G"]].sum()
+    d["PPG"] = d["PTS"]/d["G"] 
 
     for player in team1: 
-        res = df[df["PlayerName"] == player]["PPG"] 
+        res = d.loc[player]["PPG"]
         points1.append(res) 
     for player in team2: 
-         res = df[df["PlayerName"] == player]["PPG"] 
+         res = d.loc[player]["PPG"]
          points2.append(res) 
 
     totalPoints1 = sum(points1) 
+    totalPoints1 = round(totalPoints1) 
+    
     totalPoints2 = sum(points2) 
+    totalPoints2 = round(totalPoints2)
 
     if totalPoints1 > totalPoints2: 
         print(f"Team 1 wins with your final score of {totalPoints1} - {totalPoints2}")
-        plt.bar(["Team 1", "Team 2"], [points1, points2], color = ["blue", "purple"])
+        plt.bar(["Team 1", "Team 2"], [totalPoints1, totalPoints2], color = ["orange", "purple"])
         plt.title("Five on Five result") 
         plt.show()
 
  
     print(f"Team 2 wins with your final score of {totalPoints1} - {totalPoints2}")
     plt.title("Five on Five result")
-    plt.bar(["Team 1", "Team 2"], [points1, points2], color = ["blue", "purple"])
+    # plt.bar(["Team 1", "Team 2"], [totalPoints1, totalPoints2], color = ["orange", "purple"])
+
     plt.show() 
 
 
 
 
 
-#function ideas: --> 3 functions left 
+#function ideas: --> 1 function left 
 
-#starting 5 function where you choose your starting 5 and another person chooses their starting 5 and u see who wins 
-#Will be strictly based on points 
-
+#not doing 
 #create stat called most offensive impact and find the most offensive impactful person  
 #formula will be points + rebounds + assists - turnovers   
 #write a query that sums up all of those stats by grouping the players and then print the result 
@@ -287,6 +289,7 @@ def FiveOnFive():
 #same thing but defense 
 #blocks + steals - fouls   
 
+#doing 
 #show me a draft class 
 #where we group by names and we choose the people who have the min year and if it is equal to draft class number user enters we display 
 #those said players  
@@ -296,7 +299,9 @@ def FiveOnFive():
 
 
 
-# print("Welcome to the NBA player finder")
+
+print("Welcome to the NBA player finder")
+FiveOnFive() 
 # searchPlayer = str(input("Enter an NBA player: "))  
 
 # searchPlayerStats(searchPlayer) 
