@@ -231,17 +231,47 @@ def playerHistory(player):
    plt.show()
 
 
-def FiveOnFive():  
+def FiveOnFive(): 
+    df = pd.read_csv("nbaNew.csv") 
+    df = df["PlayerName"].str.replace("*", "") 
     team1 = [] 
-    team2 = []
-    while len(team1) < 5 and len(team2) < 5:  
-        chosenPlayerTeam1 = str(input("Enter Player Name: (Team 2): ")) 
+    team2 = [] 
+    points1 = [] 
+    points2 = [] 
+
+    while len(team1) < 5 or len(team2) < 5:  
+        chosenPlayerTeam1 = str(input("Enter Player Name: (Team 1): ")) 
         team1.append(chosenPlayerTeam1) 
         chosenPlayerTeam2 = str(input("Enter Player Name (Team 2): ")) 
-        team2.append(chosenPlayerTeam2)
+        team2.append(chosenPlayerTeam2) 
     
-    #get the data of total points 
-    return 
+
+    df = df.groupby("PlayerName")[["PTS", "G"]].sum() 
+    df["PPG"] = df["PTS"]/df["G"] 
+
+    for player in team1: 
+        res = df[df["PlayerName"] == player]["PPG"] 
+        points1.append(res) 
+    for player in team2: 
+         res = df[df["PlayerName"] == player]["PPG"] 
+         points2.append(res) 
+
+    totalPoints1 = sum(points1) 
+    totalPoints2 = sum(points2) 
+
+    if totalPoints1 > totalPoints2: 
+        print(f"Team 1 wins with your final score of {totalPoints1} - {totalPoints2}")
+        plt.bar(["Team 1", "Team 2"], [points1, points2], color = ["blue", "purple"])
+        plt.title("Five on Five result") 
+        plt.show()
+
+ 
+    print(f"Team 2 wins with your final score of {totalPoints1} - {totalPoints2}")
+    plt.title("Five on Five result")
+    plt.bar(["Team 1", "Team 2"], [points1, points2], color = ["blue", "purple"])
+    plt.show() 
+
+
 
 
 
@@ -266,10 +296,10 @@ def FiveOnFive():
 
 
 
-print("Welcome to the NBA player finder")
-searchPlayer = str(input("Enter an NBA player: "))  
+# print("Welcome to the NBA player finder")
+# searchPlayer = str(input("Enter an NBA player: "))  
 
-searchPlayerStats(searchPlayer) 
+# searchPlayerStats(searchPlayer) 
 
 # p1 = str(input("Enter Player 1: "))  
 # p1 = p1.strip()
