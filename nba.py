@@ -328,7 +328,8 @@ def showDraftClass(draftClass):
 
 #main needs to be created 
 
-
+def main(): 
+   return 0 
 
 
 
