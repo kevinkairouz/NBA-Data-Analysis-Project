@@ -278,9 +278,14 @@ def FiveOnFive():
 
 
 
-def showDraftClass(draftClass): 
+def showDraftClass(draftClass):  
 
-    return 
+    df = pd.read_csv("nbaNew.csv") 
+    df = df.groupby("PlayerName")["SeasonStart"].min() 
+    print(df.loc["LeBron James"])  
+    #Partially finished func
+
+# showDraftClass(2003)
 #function ideas: --> 1 function left 
 
 #not doing 
@@ -302,7 +307,7 @@ def showDraftClass(draftClass):
 
 
 
-print("Welcome to the NBA player finder")
+# print("Welcome to the NBA player finder")
 # searchPlayer = str(input("Enter an NBA player: "))  
 
 # searchPlayerStats(searchPlayer) 
@@ -320,6 +325,7 @@ print("Welcome to the NBA player finder")
 
 
 
+#main needs to be created 
 
 
 
