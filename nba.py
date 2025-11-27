@@ -282,7 +282,7 @@ def showDraftClass(draftClass):
 
     df = pd.read_csv("nbaNew.csv") 
     df = df.groupby("PlayerName")["SeasonStart"].min() 
-    print(df.loc["LeBron James"])  
+    
     #Partially finished func
 
 # showDraftClass(2003)
