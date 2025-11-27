@@ -282,8 +282,13 @@ def showDraftClass(draftClass):
 
     df = pd.read_csv("nbaNew.csv") 
     df = df.groupby("PlayerName")["SeasonStart"].min() 
-    df = df[df["SeasonStart"] == draftClass] 
-    print(df.to_string())
+    print(df.to_string())  
+    #need to fix final stage 
+    
+
+
+showDraftClass(2004) 
+
     #Partially finished func
 
 # showDraftClass(2003)
