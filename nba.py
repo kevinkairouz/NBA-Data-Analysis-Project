@@ -285,7 +285,7 @@ def showDraftClass(draftClass):
     df = df[df["SeasonStart"] == draftClass]
     
 
-    print(df.head())
+    print(df.to_string())
       
     #need to fix final stage 
     
