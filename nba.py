@@ -290,17 +290,42 @@ def showDraftClass(draftClass):
 
 def main(): 
     print("Wlecome to NBA Finder: ") 
-
-    while True: 
-        choice = str(input("Choose an option:\n (1) Search Player Stats\n(2) Search Top 5 players in CSV\n(3) Find Worst 5 in CSV\n(4) Compare Two Players \n (5) Compare Three Players \n (6) Player vs Player Comparison \n (7) Track Player History \n (8) 5 on 5 draft \n (9) Search Draft Class \n (0) Exit")) 
-        
+    running = True
+    while running: 
+        choice = int(input("Choose an option: \n (1) Search Player Stats \n (2) Search Top 5 players in CSV \n (3) Find Worst 5 in CSV \n (4) Compare Two Players \n (5) Compare Three Players \n (6) Player A vs Player B Comparison \n (7) Track Player Mins vs Rest \n (8) Track Player History \n (9) 5 on 5 Draft \n (0) Exit: \n (11) Find Draft Class ")) 
         if choice == 0: 
-            break 
-    
-    #TODO finish main (used while loop and break out of while loop if 0 is entered as choice input/read from console)
-        
+            running = False  
+        elif choice == 1:  
+            player = str(input("Enter Player Name: ")) 
+            searchPlayerStats(player) 
+        elif choice == 2: 
+            findTopFive() 
+        elif choice == 3: 
+            findWorstFive() 
+        elif choice == 4: 
+            p1 = str(input("Enter Player 1: ")) 
+            p2 = str(input("Enter Player 2: ")) 
+            compareTwoPlayers(p1, p2) 
+        elif choice == 5:
+            p1 = str(input("Enter Player 1: ")) 
+            p2 = str(input("Enter Player 2: "))  
+            p3 = str(input("Enter Player 3: "))
+            compareThreePlayers(p1, p2, p3) 
+        elif choice == 6: 
+            playerVsplayer()  
+        elif choice == 7: 
+            player = str(input("Enter Player Name: ")) 
+            compareMinsToRest(player) 
+        elif choice == 8:
+            player = str(input("Enter Player Name: ")) 
+            playerHistory(player) 
+        elif choice == 9: 
+            FiveOnFive()  
+        elif choice == 11: 
+            dc = int(input("Enter Draft class: ")) 
+            showDraftClass(dc)
 
-main()
+main() 
 
 
 
@@ -309,4 +334,4 @@ main()
 
 
 
-print("Hello\nWorld!")
+
