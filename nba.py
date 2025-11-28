@@ -287,58 +287,20 @@ def showDraftClass(draftClass):
 
     print(df.to_string())
       
-    #need to fix final stage 
-    
-
-
-showDraftClass(2004) 
-
-    #Partially finished func
-
-# showDraftClass(2003)
-#function ideas: --> 1 function left 
-
-#not doing 
-#create stat called most offensive impact and find the most offensive impactful person  
-#formula will be points + rebounds + assists - turnovers   
-#write a query that sums up all of those stats by grouping the players and then print the result 
-#optional make it by year so group by year 
-#same thing but defense 
-#blocks + steals - fouls   
-
-#doing 
-#show me a draft class 
-#where we group by names and we choose the people who have the min year and if it is equal to draft class number user enters we display 
-#those said players  
-
-
-
-
-
-
-
-# print("Welcome to the NBA player finder")
-# searchPlayer = str(input("Enter an NBA player: "))  
-
-# searchPlayerStats(searchPlayer) 
-
-# p1 = str(input("Enter Player 1: "))  
-# p1 = p1.strip()
-# p2 = str(input("Enter Player 2: ")) 
-# p2 = p2.strip() 
-# p3 = str(input("Enter Player 3: ")) 
-# p3 = p3.strip() 
-
-
-# compareThreePlayers(p1, p2, p3)
- 
-
-
-
-#main needs to be created 
 
 def main(): 
-   return 0 
+    print("Wlecome to NBA Finder: ") 
+
+    while True: 
+        choice = str(input("Choose an option:\n (1) Search Player Stats\n(2) Search Top 5 players in CSV\n(3) Find Worst 5 in CSV\n(4) Compare Two Players \n (5) Compare Three Players \n (6) Player vs Player Comparison \n (7) Track Player History \n (8) 5 on 5 draft \n (9) Search Draft Class \n (0) Exit")) 
+        
+        if choice == 0: 
+            break 
+    
+    #TODO finish main (used while loop and break out of while loop if 0 is entered as choice input/read from console)
+        
+
+main()
 
 
 
@@ -347,6 +309,4 @@ def main():
 
 
 
-
-
-
+print("Hello\nWorld!")
