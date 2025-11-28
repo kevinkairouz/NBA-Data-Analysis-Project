@@ -281,8 +281,12 @@ def FiveOnFive():
 def showDraftClass(draftClass):  
 
     df = pd.read_csv("nbaNew.csv") 
-    df = df.groupby("PlayerName")["SeasonStart"].min() 
-    print(df.to_string())  
+    df = df.groupby("PlayerName")[["SeasonStart"]].min() 
+    df = df[df["SeasonStart"] == draftClass]
+    
+
+    print(df.head())
+      
     #need to fix final stage 
     
 
