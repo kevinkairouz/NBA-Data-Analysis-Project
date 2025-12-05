@@ -1,7 +1,6 @@
 import pandas as pd   
 import matplotlib.pyplot as plt  
 import random
-
 def searchPlayerStats(playerName): 
 
     dataSet = pd.read_csv("nbaNew.csv") 
