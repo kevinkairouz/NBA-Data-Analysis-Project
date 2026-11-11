@@ -36,13 +36,15 @@ def searchPlayerStats(playerName):
 
 
 def findTopFive():  
-    dataSet = pd.read_csv("nbaNew.csv")    
+    dataSet = pd.read_csv("nbaNew.csv")     
+    dataSet["PlayerName"] = dataSet["PlayerName"].str.replace("*", "")
     d = dataSet.groupby("PlayerName")[["PTS", "G", "AST", "TRB"]].sum()   
 
     d["PPG"] = d["PTS"]/d["G"]  
     d["RPG"] = d["TRB"]/d["G"]  
     d["APG"] = d["AST"]/d["G"]  
 
+    
     d = d.sort_values(by=["PPG", "RPG", "APG"], ascending= False)    
     print(d.head()) 
 
@@ -55,7 +57,7 @@ def findWorstFive():
     d["APG"] = d["AST"]/d["G"]  
 
     d = d.sort_values(by=["PPG", "RPG", "APG"], ascending= False)    
-    print(d.tail()) 
+    print(d.tail(6)) 
 
 def compareTwoPlayers(player1, player2):  
 
